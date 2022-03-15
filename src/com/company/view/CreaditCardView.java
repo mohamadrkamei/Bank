@@ -22,6 +22,7 @@ public class CreaditCardView {
         do {
 
             System.out.println("1. ایجاد کارت");
+            System.out.println("2. جست و جوی  کارت");
             System.out.println("0.صفحه ی قبل");
 
 
@@ -30,6 +31,9 @@ public class CreaditCardView {
             switch (choice) {
                 case 1:
                     createCard();
+                    break;
+                case 2:
+                    findCard();
                     break;
                 case 0:
                     quit = true;
@@ -50,6 +54,14 @@ public class CreaditCardView {
         System.out.println("شماره حساب را وارد کنید");
         String accountNumber = scn.next();
      cardController.createCard(accountNumber);
+
+    }
+
+    private void findCard() throws SQLException {
+
+        System.out.println("شماره کارت را وارد کنید");
+        String cardNumber = scn.next();
+        cardController.findcard(cardNumber);
 
     }
 

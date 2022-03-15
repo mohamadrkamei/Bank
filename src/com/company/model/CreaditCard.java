@@ -7,12 +7,11 @@ import lombok.Setter;
 @Setter
 public class CreaditCard {
 
-    Account account;
+    long accountId;
     long id;
     boolean accountStatus;
     String cardNumber;
     String expirationDate;
     String cvv2;
-
 
 }

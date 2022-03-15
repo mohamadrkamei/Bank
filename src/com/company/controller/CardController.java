@@ -11,4 +11,9 @@ public class CardController {
     public void createCard(String accountNumber) throws SQLException {
         cardService.createCard(accountNumber);
     }
+
+    public void findcard(String cardNumber) throws SQLException {
+
+        cardService.findCard(cardNumber);
+    }
 }

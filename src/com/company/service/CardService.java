@@ -24,8 +24,8 @@ public class CardService {
         Account account = accountService.findAccount(accountNumber);
 
         creaditCard.setCardNumber(generateCardNumber());
-        creaditCard.setAccount(account);
-        creaditCard.setAccountStatus(account.getActivity());
+        creaditCard.setAccountId(account.getId());
+        creaditCard.setAccountStatus(account.isActivity());
         creaditCard.setCvv2(generateCVV2());
         creaditCard.setExpirationDate(generateExpireDate());
         cardRepository.save(creaditCard);
