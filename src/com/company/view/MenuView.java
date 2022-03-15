@@ -23,6 +23,9 @@ public class MenuView {
             System.out.println("2.ایجاد مشتری ");
             System.out.println("3.ایجاد حساب ");
         System.out.println("4.ساخت کارت ");
+        System.out.println("5.موبایل بانک ");
+        System.out.println("6.انتقال وجه ");
+
             System.out.println("0.خروج");
 
 
