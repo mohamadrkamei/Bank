@@ -70,4 +70,12 @@ public class CardService {
 
         return String.valueOf(jalaliDate);
     }
+
+    public void findCard(String cardNumber) throws SQLException {
+
+        cardRepository.find(cardNumber);
+
+    }
+
+
 }
