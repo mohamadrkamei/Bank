@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="ojdbc6">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../../jarfile/ojdbc6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../jarfile/jalali-calendar-1.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
