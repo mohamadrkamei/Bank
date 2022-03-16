@@ -1,4 +1,4 @@
-package com.company.view;
+package com.company.view.mobilebank;
 
 import java.util.Scanner;
 
@@ -36,5 +36,7 @@ public class MobileBankView {
     }
 
     private static void sIMcardrecharge() {
+
+        System.out.println("");
     }
 }
