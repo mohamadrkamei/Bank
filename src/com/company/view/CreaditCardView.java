@@ -1,9 +1,7 @@
 package com.company.view;
 
-import com.company.controller.AccountController;
 import com.company.controller.CardController;
-import com.company.service.CardService;
-import com.company.service.CustomerService;
+import com.company.service.impl.CustomerService;
 
 import java.sql.SQLException;
 import java.util.Scanner;

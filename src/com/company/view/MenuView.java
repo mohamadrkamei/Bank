@@ -2,20 +2,16 @@ package com.company.view;
 
 import com.company.controller.BankController;
 import com.company.model.Bank;
+import com.company.view.mobilebank.MobileBankView;
 
 import java.sql.SQLException;
 import java.util.Scanner;
 
 public class MenuView {
 
-    Scanner scn = new Scanner(System.in);
-    boolean quit = false;
-
-
-
-    public void login() throws SQLException, InterruptedException {
-
-
+    public  static void login() throws SQLException, InterruptedException {
+        Scanner scn = new Scanner(System.in);
+        boolean quit = false;
 
             System.out.println("خوش آمدید");
 
@@ -48,6 +44,10 @@ public class MenuView {
                 CreaditCardView creaditCardView = new CreaditCardView();
                 creaditCardView.view();
                 break;
+                case 5:
+                    MobileBankView mobileBankView = new MobileBankView();
+                    mobileBankView.mainView();
+                    break;
                 case 0:
                     quit = true;
                     break;

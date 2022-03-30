@@ -1,13 +1,19 @@
 package com.company.view.mobilebank;
 
+import com.company.dto.SimCardReChargeDto;
+import com.company.controller.mobileBankController.MobileBankController;
+import com.company.view.MenuView;
+
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class MobileBankView {
 
+     Scanner scn = new Scanner(System.in);
+     MobileBankController mobileBankController = new MobileBankController();
 
+    public  void  mainView() throws SQLException, InterruptedException {
 
-    public static  void  mainView(){
-        Scanner scn = new Scanner(System.in);
         System.out.println("به موبایل بانک خوش آمدید ");
         System.out.println("1-خرید شارژ");
         System.out.println("2-انتقال کارت به کارت ");
@@ -15,7 +21,7 @@ public class MobileBankView {
 
         int choice = scn.nextInt();
         switch (choice){
-            case 1: sIMcardrecharge();
+            case 1: simCardreCharge();
             break;
             case 2:moneyTransfer();
             break;
@@ -35,8 +41,54 @@ public class MobileBankView {
     private static void moneyTransfer() {
     }
 
-    private static void sIMcardrecharge() {
+    private  void simCardreCharge() throws SQLException, InterruptedException {
 
-        System.out.println("");
+        System.out.println("شماره ی خود را وارد کنید ");
+        SimCardReChargeDto simCardReChargeDto = new SimCardReChargeDto();
+        String phoneNumber= scn.next();
+
+        System.out.println("مبلغ شارژ را وارد کنید ");
+        long chargeAmount= scn.nextInt();
+
+        System.out.println("شماره کارت را وارد کنید ");
+        String cardNumber= scn.next();
+       String operator = useOperator();
+
+        simCardReChargeDto.setPhoneNumber(phoneNumber);
+        simCardReChargeDto.setAmount(chargeAmount);
+        simCardReChargeDto.setCardNumber(cardNumber);
+        simCardReChargeDto.setOperator(operator);
+
+        mobileBankController.simCardRecharge(simCardReChargeDto);
+
+
+    }
+
+    private String useOperator() throws SQLException, InterruptedException {
+
+        String operator = null;
+        System.out.println("اپراتور خود را انتخاب کنید");
+
+        System.out.println("1. ایرانسل");
+        System.out.println("2. همراه اول ");
+        System.out.println("3. رایتل ");
+        System.out.println("0.صفحه ی قبل");
+        int choice = scn.nextInt();
+
+        switch (choice){
+            case 1 :operator ="ایرانسل";
+            break;
+            case 2 : operator="همراه اول";
+            break;
+            case 3 : operator = "رایتل";
+            break;
+            case 0 :
+                MenuView.login();
+            default:
+                System.out.println("wrong choice.");
+                simCardreCharge();
+        }
+
+        return operator;
     }
 }

@@ -1,4 +1,4 @@
-package com.company.service;
+package com.company.service.impl;
 
 import com.company.model.Customer;
 import com.company.repository.impl.CustomerRepository;

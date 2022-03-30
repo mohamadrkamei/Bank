@@ -1,6 +1,6 @@
 package com.company.controller;
 
-import com.company.service.AccountService;
+import com.company.service.impl.AccountService;
 
 import java.sql.SQLException;
 
