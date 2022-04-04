@@ -3,7 +3,6 @@ package com.company.service.impl;
 import com.company.model.Account;
 import com.company.model.CreaditCard;
 import com.company.repository.impl.CardRepository;
-import com.company.service.impl.AccountService;
 import com.github.eloyzone.jalalicalendar.DateConverter;
 import com.github.eloyzone.jalalicalendar.JalaliDate;
 
@@ -16,13 +15,13 @@ public class CardService {
 
     CreaditCard creaditCard = new CreaditCard();
 
-    AccountService accountService = new AccountService();
+    AccountServiceImpl accountServiceImpl = new AccountServiceImpl();
 
     CardRepository cardRepository = new CardRepository();
 
     public void createCard(String accountNumber) throws SQLException {
 
-        Account account = accountService.findAccount(accountNumber);
+        Account account = accountServiceImpl.findAccount(accountNumber);
 
         creaditCard.setCardNumber(generateCardNumber());
         creaditCard.setAccountId(account.getId());

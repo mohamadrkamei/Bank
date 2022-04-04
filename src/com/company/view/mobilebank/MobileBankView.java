@@ -2,6 +2,7 @@ package com.company.view.mobilebank;
 
 import com.company.dto.SimCardReChargeDto;
 import com.company.controller.mobileBankController.MobileBankController;
+import com.company.enumeration.Operator;
 import com.company.view.MenuView;
 
 import java.sql.SQLException;
@@ -52,7 +53,7 @@ public class MobileBankView {
 
         System.out.println("شماره کارت را وارد کنید ");
         String cardNumber= scn.next();
-       String operator = useOperator();
+       Operator operator = useOperator();
 
         simCardReChargeDto.setPhoneNumber(phoneNumber);
         simCardReChargeDto.setAmount(chargeAmount);
@@ -64,9 +65,9 @@ public class MobileBankView {
 
     }
 
-    private String useOperator() throws SQLException, InterruptedException {
+    private Operator useOperator() throws SQLException, InterruptedException {
 
-        String operator = null;
+        Operator operator = null;
         System.out.println("اپراتور خود را انتخاب کنید");
 
         System.out.println("1. ایرانسل");
@@ -76,11 +77,12 @@ public class MobileBankView {
         int choice = scn.nextInt();
 
         switch (choice){
-            case 1 :operator ="ایرانسل";
+            case 1 :
+                 operator = Operator.IRANCELL;
             break;
-            case 2 : operator="همراه اول";
+            case 2 : operator= Operator.MCI;
             break;
-            case 3 : operator = "رایتل";
+            case 3 : operator = Operator.RIGHTEL;
             break;
             case 0 :
                 MenuView.login();

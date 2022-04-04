@@ -2,11 +2,12 @@ package com.company.service.impl;
 
 import com.company.model.Account;
 import com.company.repository.impl.AccountRepository;
+import com.company.service.AccountService;
 
 import java.sql.SQLException;
 
 
-public class AccountService {
+public class AccountServiceImpl implements AccountService {
 
     Account account = new Account();
     String nationalCode = "IR";
@@ -42,4 +43,25 @@ public class AccountService {
         return accountRepository.find(accountNumber);
     }
 
+    @Override
+    public void withdrawal(long amount, String accountNumber) throws SQLException {
+          Account account = findAccount("000000438340786981 ");
+          long balance = account.getBalance() + amount;
+          account.setBalance(balance);
+          accountRepository.updateBalanace(amount, "000000438340786981");
+
+    }
+
+    @Override
+    public void deposit(long amount, String accountNumber) throws SQLException {
+        Account account = findAccount(accountNumber);
+        long balance =account.getBalance() - amount;
+        account.setBalance(balance);
+        accountRepository.updateBalanace( amount, accountNumber);
+    }
+
+    @Override
+    public String findAccountNumberWithCard(String cardNumber) {
+        return null;
+    }
 }

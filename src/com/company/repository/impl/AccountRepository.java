@@ -3,6 +3,7 @@ package com.company.repository.impl;
 import com.company.model.Account;
 import com.company.repository.AbstractRepository;
 import com.company.repository.CrudRepository;
+import com.company.service.AccountService;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,11 +17,11 @@ public class AccountRepository extends AbstractRepository implements CrudReposit
     @Override
     public void save(Account account) throws SQLException {
 
-        con = connect();
+
         statement = con.createStatement();
         rs = null;
         if (con == null) {
-            System.out.println("conection is null");
+            System.out.println("Connection is null");
 
         }
         assert con != null;
@@ -97,5 +98,18 @@ public class AccountRepository extends AbstractRepository implements CrudReposit
 
 
         return account;
+    }
+
+
+    public void updateBalanace(long balance , String accountNumber) throws SQLException {
+        statement = con.createStatement();
+        rs = null;
+        if(con == null){
+            System.out.println("connection is null");
+        }
+        String sql ="UPDATE ACCOUNT SET BALANCE = " + balance  + "where ACCOUNT_NUMBER  =" + accountNumber ;
+
+        rs = statement.executeQuery(sql);
+        rs.next();
     }
 }
