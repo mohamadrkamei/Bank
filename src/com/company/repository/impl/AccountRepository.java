@@ -1,10 +1,12 @@
 package com.company.repository.impl;
 
+import com.company.jdbc.DbConnection;
 import com.company.model.Account;
 import com.company.repository.AbstractRepository;
 import com.company.repository.CrudRepository;
 import com.company.service.AccountService;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -17,7 +19,7 @@ public class AccountRepository extends AbstractRepository implements CrudReposit
     @Override
     public void save(Account account) throws SQLException {
 
-
+        Connection con = DbConnection.getInstance();
         statement = con.createStatement();
         rs = null;
         if (con == null) {
@@ -112,4 +114,5 @@ public class AccountRepository extends AbstractRepository implements CrudReposit
         rs = statement.executeQuery(sql);
         rs.next();
     }
+
 }

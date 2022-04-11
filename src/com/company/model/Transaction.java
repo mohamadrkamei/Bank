@@ -13,7 +13,7 @@ public class Transaction {
     String debitAccountNumber;
     long amount;
     String date;
-    boolean status;
+    char status;
     String description;
 
 

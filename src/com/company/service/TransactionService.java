@@ -7,5 +7,7 @@ import java.sql.SQLException;
 
 public interface TransactionService {
 
-   Transaction doTransaction(Transaction transaction) throws SQLException;
+   void doTransaction(Transaction transaction) throws SQLException;
+
+   void save(Transaction transaction) throws SQLException;
 }

@@ -44,12 +44,14 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public void withdrawal(long amount, String accountNumber) throws SQLException {
-          Account account = findAccount("000000438340786981 ");
-          long balance = account.getBalance() + amount;
-          account.setBalance(balance);
-          accountRepository.updateBalanace(amount, "000000438340786981");
-
+    public void withdrawal(long amount, String accountNumber) throws Exception {
+          Account account = findAccount(accountNumber);
+          if (account.getBalance()<amount){
+              throw  new Exception("account balance error");
+          }else {
+              long balance = account.getBalance() - amount;
+              accountRepository.updateBalanace(balance, accountNumber);
+          }
     }
 
     @Override
@@ -61,7 +63,12 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public String findAccountNumberWithCard(String cardNumber) {
-        return null;
+    public void topup(long amount, String accountNumber) throws SQLException {
+        Account account = findAccount(accountNumber);
+        long balance =account.getBalance() - amount;
+        account.setBalance(balance);
+        accountRepository.updateBalanace( amount, accountNumber);
     }
+
+
 }

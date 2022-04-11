@@ -1,5 +1,6 @@
 package com.company.service.impl;
 
+import com.company.jdbc.DbConnection;
 import com.company.model.Transaction;
 import com.company.repository.impl.TransactionRepository;
 import com.company.service.TransactionService;
@@ -12,18 +13,31 @@ public class TransactionServiceImpl implements TransactionService {
 
     AccountServiceImpl accountServiceImpl = new AccountServiceImpl();
     @Override
-    public Transaction doTransaction(Transaction transaction) throws SQLException {
-
+    public void doTransaction(Transaction transaction) throws SQLException {
+        char status;
         try{
             accountServiceImpl.withdrawal(transaction.getAmount(),transaction.getDebitAccountNumber());
-        transaction.setStatus(true);
-
+        transaction.setStatus('y');
+        System.out.println("تراکنش موفق");
         }catch (Exception e){
-            transaction.setStatus(false);
+            transaction.setStatus('n');
+            System.out.println("تراکنش نا موفق .موجودی کافی نیست ");
+
         }
 
-        transactionRepository.save(transaction);
+      save(transaction);
 
-        return null;
+    }
+
+    @Override
+    public void save(Transaction transaction) throws SQLException {
+          try {
+
+              transactionRepository.save(transaction);
+          }catch (SQLException e){
+             DbConnection.getInstance().rollback();
+
+          }
+
     }
 }

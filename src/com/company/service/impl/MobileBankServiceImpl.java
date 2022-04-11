@@ -19,27 +19,35 @@ public class MobileBankServiceImpl implements MobileBankService {
 
     TransactionService transactionService = new TransactionServiceImpl();
     AccountServiceImpl accountService = new AccountServiceImpl();
+    CardService cardService = new CardService();
     @Override
     public void simCardCharge(SimCardReChargeDto simCardReChargeDto) throws SQLException {
 
-        Transaction transaction = new Transaction();
+        String accountNumber =findAccountNumberWithCard(simCardReChargeDto.getCardNumber());
+        if (accountNumber !=null) {
 
-        transaction.setAmount(simCardReChargeDto.getAmount());
-        transaction.setCreditAccountNumber(simCardReChargeDto.getCardNumber());
-        transaction.setDescription("خرید شارژ موبایل");
-        transaction.setDate(getCurrentDate());
-        if(simCardReChargeDto.getOperator() == Operator.MCI){
-        transaction.setCreditAccountNumber("000000812218758817");
-        }
-        if(simCardReChargeDto.getOperator() == Operator.IRANCELL){
-            transaction.setCreditAccountNumber("000000812218758817");
-        }
-        if(simCardReChargeDto.getOperator() == Operator.RIGHTEL){
-            transaction.setCreditAccountNumber("000000812218758817");
-        }
+            Transaction transaction = new Transaction();
 
-        transactionService.doTransaction(transaction);
-    }
+            transaction.setAmount(simCardReChargeDto.getAmount());
+            transaction.setDebitAccountNumber(accountNumber);
+            transaction.setDescription("خرید شارژ موبایل");
+            transaction.setDate(getCurrentDate());
+            if (simCardReChargeDto.getOperator() == Operator.MCI) {
+                transaction.setCreditAccountNumber("000000812218758817");
+            }
+            if (simCardReChargeDto.getOperator() == Operator.IRANCELL) {
+                transaction.setCreditAccountNumber("000000812218758817");
+            }
+            if (simCardReChargeDto.getOperator() == Operator.RIGHTEL) {
+                transaction.setCreditAccountNumber("000000812218758817");
+            }
+
+            transactionService.doTransaction(transaction);
+        }
+        else {
+            System.out.println("شماره کارتی با این مشخصات در دیتابیس ذخیره نشده است .");
+        }
+        }
 
     public String getCurrentDate() {
         DateConverter dateConverter = new DateConverter();
@@ -49,5 +57,11 @@ public class MobileBankServiceImpl implements MobileBankService {
         System.out.println(today);
 
         return String.valueOf(today);
+    }
+
+    public String findAccountNumberWithCard(String cardNumber) throws SQLException {
+
+
+        return  cardService.findAccountNumberWithCard(cardNumber);
     }
 }

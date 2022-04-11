@@ -77,5 +77,10 @@ public class CardService {
 
     }
 
+    public String findAccountNumberWithCard(String cardNumber) throws SQLException {
+
+
+        return  cardRepository.findAccountNumberWithCard(cardNumber);
+    }
 
 }

@@ -23,10 +23,13 @@ public class MobileBankView {
         int choice = scn.nextInt();
         switch (choice){
             case 1: simCardreCharge();
+            MenuView.login();
             break;
             case 2:moneyTransfer();
+                MenuView.login();
             break;
             case 3: showBalance();
+                MenuView.login();
             break;
             case 0 : exist();
             break;
@@ -36,7 +39,8 @@ public class MobileBankView {
     private static void showBalance() {
     }
 
-    private static void exist() {
+    private static void exist() throws SQLException, InterruptedException {
+        MenuView.login();
     }
 
     private static void moneyTransfer() {
