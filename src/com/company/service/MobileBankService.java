@@ -8,4 +8,5 @@ public interface MobileBankService {
 
 
     void simCardCharge(SimCardReChargeDto simCardReChargeDto) throws SQLException;
+     void moneyTransferWithCard(String debitCardNumber, String creaditCardNumber, long amount) throws Exception;
 }

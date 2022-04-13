@@ -16,7 +16,7 @@ public class CreaditCardView {
 
 
 
-    public  void view() throws SQLException, InterruptedException {
+    public  void view() throws Exception {
         do {
 
             System.out.println("1. ایجاد کارت");

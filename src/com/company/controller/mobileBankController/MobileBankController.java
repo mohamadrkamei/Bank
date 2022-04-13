@@ -17,4 +17,8 @@ public class MobileBankController {
 
     }
 
+    public void moneyTransferWithCard(String debitCardNumber, String creditCardNumber, long amount) throws Exception {
+
+        mobileBankService.moneyTransferWithCard(debitCardNumber,creditCardNumber,amount);
+    }
 }

@@ -9,11 +9,11 @@ import java.sql.SQLException;
 
 public class Main {
 
-    public static void main(String[] args) throws SQLException, InterruptedException {
+    public static void main(String[] args) throws Exception {
 	// write your code here
 
         MenuView menuView = new MenuView();
-        menuView.login();
+        MenuView.login();
 
 
     }

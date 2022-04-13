@@ -1,5 +1,6 @@
 package com.company.service.impl;
 
+import com.company.jdbc.DbConnection;
 import com.company.model.Account;
 import com.company.model.CreaditCard;
 import com.company.repository.impl.CardRepository;
@@ -21,14 +22,18 @@ public class CardService {
 
     public void createCard(String accountNumber) throws SQLException {
 
-        Account account = accountServiceImpl.findAccount(accountNumber);
-
-        creaditCard.setCardNumber(generateCardNumber());
-        creaditCard.setAccountId(account.getId());
-        creaditCard.setAccountStatus(account.isActivity());
-        creaditCard.setCvv2(generateCVV2());
-        creaditCard.setExpirationDate(generateExpireDate());
-        cardRepository.save(creaditCard);
+        try {
+            Account account = accountServiceImpl.findAccount(accountNumber);
+            creaditCard.setCardNumber(generateCardNumber());
+            creaditCard.setAccountId(account.getId());
+            creaditCard.setAccountStatus(account.isActivity());
+            creaditCard.setCvv2(generateCVV2());
+            creaditCard.setExpirationDate(generateExpireDate());
+            cardRepository.save(creaditCard);
+        }catch (Exception e){
+            DbConnection.getInstance().rollback();
+            System.out.println(e);
+        }
     }
 
     public String generateCardNumber() {
@@ -72,15 +77,22 @@ public class CardService {
     }
 
     public void findCard(String cardNumber) throws SQLException {
-
-        cardRepository.find(cardNumber);
-
+        try {
+            cardRepository.find(cardNumber);
+        }catch (Exception e){
+            System.out.println("این شماره کارت در دیتابیس ذخیره نشده است .");
+        }
     }
 
     public String findAccountNumberWithCard(String cardNumber) throws SQLException {
+        try {
+            return cardRepository.findAccountNumberWithCard(cardNumber);
+        }catch (Exception e){
 
-
-        return  cardRepository.findAccountNumberWithCard(cardNumber);
+            System.out.println(e);
+            System.out.println("حسابی با این مشخصات پیدا نشد ");
+            return null;
+        }
     }
 
 }

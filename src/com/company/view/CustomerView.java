@@ -13,7 +13,7 @@ public class CustomerView {
     Scanner scn = new Scanner(System.in);
     boolean quit = false;
     MenuView menuView = new MenuView();
-    public  void view() throws SQLException, InterruptedException {
+    public  void view() throws Exception {
         do {
 
             System.out.println("1. ایجاد مشتری جدید");
@@ -36,7 +36,7 @@ public class CustomerView {
                     break;
                 case 0:
                     quit = true;
-                    menuView.login();
+                    MenuView.login();
                     break;
                 default:
                     System.out.println("wrong choice.");

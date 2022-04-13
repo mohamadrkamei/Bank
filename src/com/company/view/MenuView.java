@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class MenuView {
 
-    public  static void login() throws SQLException, InterruptedException {
+    public  static void login() throws Exception {
         Scanner scn = new Scanner(System.in);
         boolean quit = false;
 
@@ -20,7 +20,7 @@ public class MenuView {
             System.out.println("3.ایجاد حساب ");
         System.out.println("4.ساخت کارت ");
         System.out.println("5.موبایل بانک ");
-        System.out.println("6.انتقال وجه ");
+        System.out.println("6.خدمات شعبه ");
 
             System.out.println("0.خروج");
 
@@ -47,6 +47,10 @@ public class MenuView {
                 case 5:
                     MobileBankView mobileBankView = new MobileBankView();
                     mobileBankView.mainView();
+                    break;
+                case 6:
+                     BranchView branchView= new BranchView();
+                    branchView .view();
                     break;
                 case 0:
                     quit = true;

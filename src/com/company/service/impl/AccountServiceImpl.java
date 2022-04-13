@@ -59,15 +59,15 @@ public class AccountServiceImpl implements AccountService {
         Account account = findAccount(accountNumber);
         long balance =account.getBalance() - amount;
         account.setBalance(balance);
-        accountRepository.updateBalanace( amount, accountNumber);
+        accountRepository.updateBalanace( balance, accountNumber);
     }
 
     @Override
     public void topup(long amount, String accountNumber) throws SQLException {
         Account account = findAccount(accountNumber);
-        long balance =account.getBalance() - amount;
+        long balance =account.getBalance() + amount;
         account.setBalance(balance);
-        accountRepository.updateBalanace( amount, accountNumber);
+        accountRepository.updateBalanace( balance, accountNumber);
     }
 
 

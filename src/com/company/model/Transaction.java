@@ -1,5 +1,6 @@
 package com.company.model;
 
+import com.company.enumeration.TransactionStatus;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,7 +14,7 @@ public class Transaction {
     String debitAccountNumber;
     long amount;
     String date;
-    char status;
+    TransactionStatus status;
     String description;
 
 

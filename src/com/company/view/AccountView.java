@@ -15,7 +15,7 @@ public class AccountView {
     AccountController accountController = new AccountController();
 
 
-    public  void view() throws SQLException, InterruptedException {
+    public  void view() throws Exception {
         do {
 
             System.out.println("1. ایجاد حساب جدید");
@@ -38,7 +38,7 @@ public class AccountView {
                     break;
                 case 0:
                     quit = true;
-                    menuView.login();
+                    MenuView.login();
                     break;
                 default:
                     System.out.println("wrong choice.");
@@ -67,7 +67,7 @@ public class AccountView {
 
     }
 
-    private void createAccount() throws SQLException, InterruptedException {
+    private void createAccount() throws Exception {
         System.out.println("کد ملی مشتری را وارد کنید");
         String nationality = scn.next();
         int customerId=  customerService.findCustomer(nationality);
@@ -99,7 +99,7 @@ public class AccountView {
                case 2: this.view();
                break;
                case 3:
-                   menuView.login();
+                   MenuView.login();
                    break;
            }
        }

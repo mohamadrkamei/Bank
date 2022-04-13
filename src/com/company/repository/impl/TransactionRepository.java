@@ -25,7 +25,7 @@ public class TransactionRepository extends AbstractRepository implements CrudRep
         if (con == null) {
             System.out.println("Connection is null");
         }
-        try {
+
             String sql = "INSERT INTO ACCOUNT_TRANSACTION(CREADIT_ACCOUNT_NUMBER, DEBIT_ACCOUNT_NUMBER, AMOUNT , TRANSACTION_DATE, DESCRIPTION ,STATUS,TRANSACTION_ID)" +
                     "VALUES('" + transaction.getCreditAccountNumber() +
                     "','" + transaction.getDebitAccountNumber() +
@@ -37,10 +37,7 @@ public class TransactionRepository extends AbstractRepository implements CrudRep
             rs.next();
             System.out.println("-------------------------------------------------------------");
             System.out.println("insert transaction to database");
-        }catch (SQLException e){
-            con.rollback();
-            System.out.println("transaction roll back  ");
-        }
+
     }
 
     @Override

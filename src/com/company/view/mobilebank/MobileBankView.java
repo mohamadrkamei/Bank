@@ -10,10 +10,10 @@ import java.util.Scanner;
 
 public class MobileBankView {
 
-     Scanner scn = new Scanner(System.in);
+      Scanner scn = new Scanner(System.in);
      MobileBankController mobileBankController = new MobileBankController();
 
-    public  void  mainView() throws SQLException, InterruptedException {
+    public  void  mainView() throws Exception {
 
         System.out.println("به موبایل بانک خوش آمدید ");
         System.out.println("1-خرید شارژ");
@@ -25,7 +25,7 @@ public class MobileBankView {
             case 1: simCardreCharge();
             MenuView.login();
             break;
-            case 2:moneyTransfer();
+            case 2:moneyTransferWithCard();
                 MenuView.login();
             break;
             case 3: showBalance();
@@ -39,14 +39,25 @@ public class MobileBankView {
     private static void showBalance() {
     }
 
-    private static void exist() throws SQLException, InterruptedException {
+    private static void exist() throws Exception {
         MenuView.login();
     }
 
-    private static void moneyTransfer() {
+    private  void moneyTransferWithCard() throws Exception {
+        System.out.println("شماره کارت را وارد کنید ");
+        String debitCardNumber = scn.next();
+
+        System.out.println("شماره کارت مقصد را وارد کنید ");
+        String creaditCardNumber = scn.next();
+
+        System.out.println("مبلغ انتقال را وارد کنید ");
+        long amount = scn.nextInt();
+
+        mobileBankController.moneyTransferWithCard(debitCardNumber,creaditCardNumber,amount);
+
     }
 
-    private  void simCardreCharge() throws SQLException, InterruptedException {
+    private  void simCardreCharge() throws Exception {
 
         System.out.println("شماره ی خود را وارد کنید ");
         SimCardReChargeDto simCardReChargeDto = new SimCardReChargeDto();
@@ -69,7 +80,7 @@ public class MobileBankView {
 
     }
 
-    private Operator useOperator() throws SQLException, InterruptedException {
+    private Operator useOperator() throws Exception {
 
         Operator operator = null;
         System.out.println("اپراتور خود را انتخاب کنید");
