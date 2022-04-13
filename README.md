@@ -1,4 +1,4 @@
-# Banka
+# Bank
 hi, this project develop with java core and jdbc . 
 in my project dont used famous frameworks like spring boot and spring and hibernate 
 I  use just Java core  for better understanding java and jdbc .
