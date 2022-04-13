@@ -4,6 +4,6 @@ in my project dont used famous frameworks like spring boot and spring and hibern
 I  use just Java core  for better understanding java and jdbc .
 the project databases is oracle .
 Project features:
-1- mobile bank for charge phoneNumber and money transfer whith creadit card
+1- mobile bank for charge phoneNumber and money transfer with creadit card
 2- branch : topUp account , deposit Account , money transfer with account number 
 the project articture is mvc
