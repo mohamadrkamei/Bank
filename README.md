@@ -6,4 +6,4 @@ the project databases is oracle .
 Project features:
 1- mobile bank for charge phoneNumber and money transfer whith creadit card
 2- branch : topUp account , deposit Account , money transfer with account number 
-te project articture is mvc
+the project articture is mvc
