@@ -80,7 +80,7 @@ public class CardService {
         try {
             cardRepository.find(cardNumber);
         }catch (Exception e){
-            System.out.println("این شماره کارت در دیتابیس ذخیره نشده است .");
+            System.out.println("not fond this card Number .");
         }
     }
 
@@ -90,7 +90,7 @@ public class CardService {
         }catch (Exception e){
 
             System.out.println(e);
-            System.out.println("حسابی با این مشخصات پیدا نشد ");
+            System.out.println("not fund account noumber ");
             return null;
         }
     }

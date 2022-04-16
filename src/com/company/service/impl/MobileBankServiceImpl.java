@@ -37,7 +37,7 @@ public class MobileBankServiceImpl implements MobileBankService {
             transactionService.doTransaction(transaction);
         }
         else {
-            System.out.println("شماره کارتی با این مشخصات در دیتابیس ذخیره نشده است .");
+            System.out.println("not fount this card number .");
         }
         }
 
@@ -51,12 +51,12 @@ public class MobileBankServiceImpl implements MobileBankService {
         try {
             cardService.findCard(debitCardNumber);
         }catch (Exception e){
-            System.out.println("شماره کارت مبدا اشتباه میباشد");
+            System.out.println("source card number is UnSuccessful");
         }
         try {
             cardService.findCard(creditCardNumber);
         }catch (Exception e){
-            System.out.println("شماره کارت مقصد اشتباه میباشد .");
+            System.out.println("destination card number is UnSuccessful");
         }
         String debitAccountNumber = findAccountNumberWithCard(debitCardNumber);
         String creditAccountNumber = findAccountNumberWithCard(creditCardNumber);
@@ -64,7 +64,7 @@ public class MobileBankServiceImpl implements MobileBankService {
       transaction.setAmount(amount);
       transaction.setDebitAccountNumber(debitAccountNumber);
       transaction.setCreditAccountNumber(creditAccountNumber);
-      transaction.setDescription("انتقال کارت به کارت");
+      transaction.setDescription("card to card money transfer");
       transactionService.doTransaction(transaction);
 
 

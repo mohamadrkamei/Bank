@@ -13,10 +13,10 @@ BranchController branchController =new BranchController();
     public  void view() throws Exception {
         do {
 
-            System.out.println("1.شارژ حساب");
-            System.out.println("2. انتقال حساب به حساب ");
-            System.out.println("3. برداشت از حساب");
-            System.out.println("0.صفحه ی قبل");
+            System.out.println("1.top Up account");
+            System.out.println("2. money transfer with account to account ");
+            System.out.println("3.deposit from account");
+            System.out.println("0.previous");
 
 
             int choice = scn.nextInt();
@@ -46,31 +46,31 @@ BranchController branchController =new BranchController();
     }
 
     private void withdrawFromAccount() throws Exception {
-        System.out.println("شماره حساب خود را وارد کنید ");
+        System.out.println("account number");
         String AccountNumber = scn.next();
-        System.out.println("مبلغ را وارد کنید  ");
+        System.out.println("amount");
         long amount = scn.nextInt();
         branchController.withdrawFromAccount(amount,AccountNumber);
 
     }
 
     private void moneyTransfer() throws Exception {
-        System.out.println("شماره حساب خود را وارد کنید ");
+        System.out.println("account number ");
         String debitAccountNumber = scn.next();
 
-        System.out.println("شماره حساب مقصد را وارد کنید ");
+        System.out.println("to account number ");
         String creditAccountNumber = scn.next();
 
-        System.out.println("مبلغ را وارد کنید  ");
+        System.out.println("amount ");
         long amount = scn.nextInt();
         branchController.moneyTransfer(amount,debitAccountNumber,creditAccountNumber);
     }
 
     private void topupAccount() throws SQLException {
 
-        System.out.println("شماره حساب خود را وارد کنید ");
+        System.out.println("account number");
         String accountNumber = scn.next();
-        System.out.println("مبلغ شارژ حساب را وارد کنید  ");
+        System.out.println("amount  ");
         long amount = scn.nextInt();
         branchController.topupAccount(amount,accountNumber);
 

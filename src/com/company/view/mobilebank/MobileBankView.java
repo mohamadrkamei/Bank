@@ -15,10 +15,10 @@ public class MobileBankView {
 
     public  void  mainView() throws Exception {
 
-        System.out.println("به موبایل بانک خوش آمدید ");
-        System.out.println("1-خرید شارژ");
-        System.out.println("2-انتقال کارت به کارت ");
-        System.out.println("3-مشاهده ی موجودی");
+        System.out.println("welcome to mobile Bank ");
+        System.out.println("1-Buy a SIM card recharge ");
+        System.out.println("2-money transfer with card to card ");
+        System.out.println("3-show balance");
 
         int choice = scn.nextInt();
         switch (choice){
@@ -44,13 +44,13 @@ public class MobileBankView {
     }
 
     private  void moneyTransferWithCard() throws Exception {
-        System.out.println("شماره کارت را وارد کنید ");
+        System.out.println("card Number ");
         String debitCardNumber = scn.next();
 
-        System.out.println("شماره کارت مقصد را وارد کنید ");
+        System.out.println("to card:  ");
         String creaditCardNumber = scn.next();
 
-        System.out.println("مبلغ انتقال را وارد کنید ");
+        System.out.println("amount : ");
         long amount = scn.nextInt();
 
         mobileBankController.moneyTransferWithCard(debitCardNumber,creaditCardNumber,amount);
@@ -59,14 +59,14 @@ public class MobileBankView {
 
     private  void simCardreCharge() throws Exception {
 
-        System.out.println("شماره ی خود را وارد کنید ");
+        System.out.println("phone Number:");
         SimCardReChargeDto simCardReChargeDto = new SimCardReChargeDto();
         String phoneNumber= scn.next();
 
-        System.out.println("مبلغ شارژ را وارد کنید ");
+        System.out.println("recharge amount ? ");
         long chargeAmount= scn.nextInt();
 
-        System.out.println("شماره کارت را وارد کنید ");
+        System.out.println("card Number ");
         String cardNumber= scn.next();
        Operator operator = useOperator();
 
@@ -83,12 +83,12 @@ public class MobileBankView {
     private Operator useOperator() throws Exception {
 
         Operator operator = null;
-        System.out.println("اپراتور خود را انتخاب کنید");
+        System.out.println("operator");
 
-        System.out.println("1. ایرانسل");
-        System.out.println("2. همراه اول ");
-        System.out.println("3. رایتل ");
-        System.out.println("0.صفحه ی قبل");
+        System.out.println("1. mtn");
+        System.out.println("2.mci ");
+        System.out.println("3. rightell");
+        System.out.println("0.previous");
         int choice = scn.nextInt();
 
         switch (choice){

@@ -16,10 +16,10 @@ public class CustomerView {
     public  void view() throws Exception {
         do {
 
-            System.out.println("1. ایجاد مشتری جدید");
-            System.out.println("2. مشاهده ی تمام مشتریان ");
-            System.out.println("3. جست و جو در مشتریان ");
-            System.out.println("0.صفحه ی قبل");
+            System.out.println("1. add new customer");
+            System.out.println("2. show all of customer");
+            System.out.println("3.find customer");
+            System.out.println("0.Previous");
 
 
             int choice = scn.nextInt();
@@ -54,18 +54,18 @@ public class CustomerView {
     }
 
     private void createCustomer() throws SQLException {
-       System.out.println("نام مشتری ");
+       System.out.println("first Name  ");
        String firstName = scn.next();
-        System.out.println("نام خانوادگی مشتری ");
+        System.out.println("last name:  ");
         String lastname = scn.next();
-       System.out.println("کد ملی");
+       System.out.println("national ID");
        String nationalityId = scn.next();
        String fullName= firstName.concat(lastname);
        customerController.createCustomer(fullName,nationalityId);
 
     }
     private void findCustomer() throws SQLException {
-        System.out.println("کد ملی مشتری مورد نظر را وارد کنید :");
+        System.out.println("national ID  :");
         String nationalityId = scn.next();
 
         customerController.findCustomer(nationalityId);

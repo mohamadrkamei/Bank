@@ -16,7 +16,7 @@ public class BranchServiceImpl implements BranchService {
         Transaction transaction = new Transaction();
         transaction.setCreditAccountNumber(accountNumber);
         transaction.setAmount(amount);
-        transaction.setDescription("شارژ حساب");
+        transaction.setDescription("top Up Account ");
         transactionService.doTopUpTransaction(transaction);
     }
 
@@ -32,7 +32,7 @@ public class BranchServiceImpl implements BranchService {
        transaction.setDebitAccountNumber(debitAccountNumber);
        transaction.setCreditAccountNumber(creditAccountNumber);
        transaction.setAmount(amount);
-       transaction.setDescription("انتقال وجه");
+       transaction.setDescription("money transfer(account to account)");
 
        transactionService.doTransaction(transaction);
     }

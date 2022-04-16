@@ -13,16 +13,16 @@ public class MenuView {
         Scanner scn = new Scanner(System.in);
         boolean quit = false;
 
-            System.out.println("خوش آمدید");
+            System.out.println("welcome ");
 
-            System.out.println("1.بانک");
-            System.out.println("2.ایجاد مشتری ");
-            System.out.println("3.ایجاد حساب ");
-        System.out.println("4.ساخت کارت ");
-        System.out.println("5.موبایل بانک ");
-        System.out.println("6.خدمات شعبه ");
+            System.out.println("1.new Bank");
+            System.out.println("2.new customer ");
+            System.out.println("3.new account ");
+        System.out.println("4.creat card ");
+        System.out.println("5.mobile bank ");
+        System.out.println("6.branch ");
 
-            System.out.println("0.خروج");
+            System.out.println("0.exist");
 
 
             int choice = scn.nextInt();

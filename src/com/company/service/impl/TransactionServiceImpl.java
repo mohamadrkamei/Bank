@@ -41,10 +41,10 @@ public class TransactionServiceImpl implements TransactionService {
         try{
             accountServiceImpl.topup(transaction.getAmount(),transaction.getCreditAccountNumber());
             transaction.setStatus(TransactionStatus.Successful);
-            System.out.println("تراکنش موفق");
+            System.out.println("transaction is Successful");
         }catch (Exception e){
             transaction.setStatus(TransactionStatus.Unsuccessful);
-            System.out.println("e");
+            System.out.println("transaction is UnSuccessful  " + e);
 
         }
 
