@@ -90,7 +90,6 @@ public class CardRepository extends AbstractRepository implements CrudRepository
 
         rs = statement.executeQuery(sql);
         rs.next();
-        System.out.println("account NUmber");
         String accountNumber = rs.getString("ACCOUNT_NUMBER");
 
         return accountNumber;

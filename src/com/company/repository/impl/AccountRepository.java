@@ -115,4 +115,17 @@ public class AccountRepository extends AbstractRepository implements CrudReposit
         rs.next();
     }
 
+    public long getBalance(String accountNumber) throws SQLException {
+        statement = con.createStatement();
+        rs = null;
+        if (con == null){
+            System.out.println("connection is null");
+        }
+
+        String sql = "select balance from Account where ACCOUNT_NUMBER  = "+ accountNumber ;
+        rs= statement.executeQuery(sql);
+        rs.next();
+        long balance = rs.getLong("balance");
+        return balance;
+    }
 }

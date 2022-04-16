@@ -70,5 +70,10 @@ public class AccountServiceImpl implements AccountService {
         accountRepository.updateBalanace( balance, accountNumber);
     }
 
+    @Override
+    public long getBalance(String accountNumber) throws SQLException {
+        return accountRepository.getBalance(accountNumber);
+    }
+
 
 }

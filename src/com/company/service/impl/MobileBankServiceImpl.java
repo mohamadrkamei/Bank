@@ -69,4 +69,10 @@ public class MobileBankServiceImpl implements MobileBankService {
 
 
     }
+
+    @Override
+    public long getBalance(String cardNumber ) throws SQLException {
+       String accountNumber =  findAccountNumberWithCard(cardNumber);
+       return accountService.getBalance(accountNumber);
+    }
 }

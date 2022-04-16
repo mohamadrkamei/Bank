@@ -89,9 +89,8 @@ public class CardService {
             return cardRepository.findAccountNumberWithCard(cardNumber);
         }catch (Exception e){
 
-            System.out.println(e);
-            System.out.println("not fund account noumber ");
-            return null;
+            System.out.println("not found account number ");
+            throw e ;
         }
     }
 

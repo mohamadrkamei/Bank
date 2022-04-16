@@ -21,4 +21,8 @@ public class MobileBankController {
 
         mobileBankService.moneyTransferWithCard(debitCardNumber,creditCardNumber,amount);
     }
+
+    public Long getBalance(String cardNumber) throws SQLException {
+       return mobileBankService.getBalance(cardNumber);
+    }
 }

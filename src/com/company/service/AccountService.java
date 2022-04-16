@@ -9,4 +9,5 @@ public interface AccountService {
     void deposit(long amount,String accountNumber) throws SQLException;
     void topup(long amount,String accountNumber) throws SQLException;
 
+    long getBalance(String accountNumber) throws SQLException;
 }

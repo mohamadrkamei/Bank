@@ -36,7 +36,10 @@ public class MobileBankView {
         }
     }
 
-    private static void showBalance() {
+    private void showBalance() throws SQLException {
+        System.out.println("card Number : ");
+        String cardNumber = scn.next();
+      System.out.println(mobileBankController.getBalance(cardNumber));
     }
 
     private static void exist() throws Exception {
