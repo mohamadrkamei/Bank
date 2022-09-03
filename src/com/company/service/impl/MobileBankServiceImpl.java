@@ -5,6 +5,7 @@ import com.company.enumeration.Operator;
 import com.company.model.Transaction;
 import com.company.service.MobileBankService;
 import com.company.service.TransactionService;
+
 import java.sql.SQLException;
 
 
@@ -13,11 +14,12 @@ public class MobileBankServiceImpl implements MobileBankService {
     TransactionService transactionService = new TransactionServiceImpl();
     AccountServiceImpl accountService = new AccountServiceImpl();
     CardService cardService = new CardService();
+
     @Override
     public void simCardCharge(SimCardReChargeDto simCardReChargeDto) throws SQLException {
 
-        String accountNumber =findAccountNumberWithCard(simCardReChargeDto.getCardNumber());
-        if (accountNumber !=null) {
+        String accountNumber = findAccountNumberWithCard(simCardReChargeDto.getCardNumber());
+        if (accountNumber != null) {
 
             Transaction transaction = new Transaction();
 
@@ -35,14 +37,13 @@ public class MobileBankServiceImpl implements MobileBankService {
             }
 
             transactionService.doTransaction(transaction);
-        }
-        else {
+        } else {
             System.out.println("not fount this card number .");
         }
-        }
+    }
 
     public String findAccountNumberWithCard(String cardNumber) throws SQLException {
-        return  cardService.findAccountNumberWithCard(cardNumber);
+        return cardService.findAccountNumberWithCard(cardNumber);
     }
 
     @Override
@@ -50,29 +51,29 @@ public class MobileBankServiceImpl implements MobileBankService {
         Transaction transaction = new Transaction();
         try {
             cardService.findCard(debitCardNumber);
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("source card number is UnSuccessful");
         }
         try {
             cardService.findCard(creditCardNumber);
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("destination card number is UnSuccessful");
         }
         String debitAccountNumber = findAccountNumberWithCard(debitCardNumber);
         String creditAccountNumber = findAccountNumberWithCard(creditCardNumber);
 
-      transaction.setAmount(amount);
-      transaction.setDebitAccountNumber(debitAccountNumber);
-      transaction.setCreditAccountNumber(creditAccountNumber);
-      transaction.setDescription("card to card money transfer");
-      transactionService.doTransaction(transaction);
+        transaction.setAmount(amount);
+        transaction.setDebitAccountNumber(debitAccountNumber);
+        transaction.setCreditAccountNumber(creditAccountNumber);
+        transaction.setDescription("card to card money transfer");
+        transactionService.doTransaction(transaction);
 
 
     }
 
     @Override
-    public long getBalance(String cardNumber ) throws SQLException {
-       String accountNumber =  findAccountNumberWithCard(cardNumber);
-       return accountService.getBalance(accountNumber);
+    public long getBalance(String cardNumber) throws SQLException {
+        String accountNumber = findAccountNumberWithCard(cardNumber);
+        return accountService.getBalance(accountNumber);
     }
 }
