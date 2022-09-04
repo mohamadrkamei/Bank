@@ -1,9 +1,7 @@
 package com.company.view;
 
-import com.company.controller.AccountController;
 import com.company.controller.CardController;
-import com.company.service.CardService;
-import com.company.service.CustomerService;
+import com.company.service.impl.CustomerService;
 
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -18,11 +16,12 @@ public class CreaditCardView {
 
 
 
-    public  void view() throws SQLException, InterruptedException {
+    public  void view() throws Exception {
         do {
 
-            System.out.println("1. ایجاد کارت");
-            System.out.println("0.صفحه ی قبل");
+            System.out.println("1. create card");
+            System.out.println("2. find card");
+            System.out.println("0.previous");
 
 
             int choice = scn.nextInt();
@@ -30,6 +29,9 @@ public class CreaditCardView {
             switch (choice) {
                 case 1:
                     createCard();
+                    break;
+                case 2:
+                    findCard();
                     break;
                 case 0:
                     quit = true;
@@ -47,9 +49,17 @@ public class CreaditCardView {
 
     private void createCard() throws SQLException {
 
-        System.out.println("شماره حساب را وارد کنید");
+        System.out.println("account number : ");
         String accountNumber = scn.next();
      cardController.createCard(accountNumber);
+
+    }
+
+    private void findCard() throws SQLException {
+
+        System.out.println("card Number");
+        String cardNumber = scn.next();
+        cardController.findcard(cardNumber);
 
     }
 

@@ -1,9 +1,12 @@
 package com.company.repository.impl;
 
+import com.company.jdbc.DbConnection;
 import com.company.model.Account;
 import com.company.repository.AbstractRepository;
 import com.company.repository.CrudRepository;
+import com.company.service.AccountService;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -16,11 +19,11 @@ public class AccountRepository extends AbstractRepository implements CrudReposit
     @Override
     public void save(Account account) throws SQLException {
 
-        con = connect();
+        Connection con = DbConnection.getInstance();
         statement = con.createStatement();
         rs = null;
         if (con == null) {
-            System.out.println("conection is null");
+            System.out.println("Connection is null");
 
         }
         assert con != null;
@@ -97,5 +100,32 @@ public class AccountRepository extends AbstractRepository implements CrudReposit
 
 
         return account;
+    }
+
+
+    public void updateBalanace(long balance , String accountNumber) throws SQLException {
+        statement = con.createStatement();
+        rs = null;
+        if(con == null){
+            System.out.println("connection is null");
+        }
+        String sql ="UPDATE ACCOUNT SET BALANCE = " + balance  + "where ACCOUNT_NUMBER  =" + accountNumber ;
+
+        rs = statement.executeQuery(sql);
+        rs.next();
+    }
+
+    public long getBalance(String accountNumber) throws SQLException {
+        statement = con.createStatement();
+        rs = null;
+        if (con == null){
+            System.out.println("connection is null");
+        }
+
+        String sql = "select balance from Account where ACCOUNT_NUMBER  = "+ accountNumber ;
+        rs= statement.executeQuery(sql);
+        rs.next();
+        long balance = rs.getLong("balance");
+        return balance;
     }
 }

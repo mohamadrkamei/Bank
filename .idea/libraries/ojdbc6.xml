@@ -3,6 +3,7 @@
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/../../../../jarfile/ojdbc6.jar!/" />
       <root url="jar://$PROJECT_DIR$/../../../../jarfile/jalali-calendar-1.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../jarfile/lombok.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

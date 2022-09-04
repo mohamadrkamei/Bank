@@ -1,5 +1,6 @@
-package com.company.service;
+package com.company.service.impl;
 
+import com.company.jdbc.DbConnection;
 import com.company.model.Account;
 import com.company.model.CreaditCard;
 import com.company.repository.impl.CardRepository;
@@ -15,20 +16,24 @@ public class CardService {
 
     CreaditCard creaditCard = new CreaditCard();
 
-    AccountService accountService = new AccountService();
+    AccountServiceImpl accountServiceImpl = new AccountServiceImpl();
 
     CardRepository cardRepository = new CardRepository();
 
     public void createCard(String accountNumber) throws SQLException {
 
-        Account account = accountService.findAccount(accountNumber);
-
-        creaditCard.setCardNumber(generateCardNumber());
-        creaditCard.setAccount(account);
-        creaditCard.setAccountStatus(account.getActivity());
-        creaditCard.setCvv2(generateCVV2());
-        creaditCard.setExpirationDate(generateExpireDate());
-        cardRepository.save(creaditCard);
+        try {
+            Account account = accountServiceImpl.findAccount(accountNumber);
+            creaditCard.setCardNumber(generateCardNumber());
+            creaditCard.setAccountId(account.getId());
+            creaditCard.setAccountStatus(account.isActivity());
+            creaditCard.setCvv2(generateCVV2());
+            creaditCard.setExpirationDate(generateExpireDate());
+            cardRepository.save(creaditCard);
+        }catch (Exception e){
+            DbConnection.getInstance().rollback();
+            System.out.println(e);
+        }
     }
 
     public String generateCardNumber() {
@@ -70,4 +75,23 @@ public class CardService {
 
         return String.valueOf(jalaliDate);
     }
+
+    public void findCard(String cardNumber) throws SQLException {
+        try {
+            cardRepository.find(cardNumber);
+        }catch (Exception e){
+            System.out.println("not fond this card Number .");
+        }
+    }
+
+    public String findAccountNumberWithCard(String cardNumber) throws SQLException {
+        try {
+            return cardRepository.findAccountNumberWithCard(cardNumber);
+        }catch (Exception e){
+
+            System.out.println("not found account number ");
+            throw e ;
+        }
+    }
+
 }

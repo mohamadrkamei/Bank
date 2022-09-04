@@ -1,20 +1,20 @@
 package com.company.controller;
 
-import com.company.service.AccountService;
+import com.company.service.impl.AccountServiceImpl;
 
 import java.sql.SQLException;
 
 public class AccountController {
 
-    AccountService accountService= new AccountService();
+    AccountServiceImpl accountServiceImpl = new AccountServiceImpl();
     public void CreateAccount(int customerId) throws SQLException {
 
-        accountService.createAccount(customerId);
+        accountServiceImpl.createAccount(customerId);
 
     }
 
     public void showCustomerAccounts(int customerId) throws SQLException {
-        accountService.showCustomerAccounts(customerId);
+        accountServiceImpl.showCustomerAccounts(customerId);
 
     }
 }

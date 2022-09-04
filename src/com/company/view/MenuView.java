@@ -2,28 +2,27 @@ package com.company.view;
 
 import com.company.controller.BankController;
 import com.company.model.Bank;
+import com.company.view.mobilebank.MobileBankView;
 
 import java.sql.SQLException;
 import java.util.Scanner;
 
 public class MenuView {
 
-    Scanner scn = new Scanner(System.in);
-    boolean quit = false;
+    public  static void login() throws Exception {
+        Scanner scn = new Scanner(System.in);
+        boolean quit = false;
 
+            System.out.println("welcome ");
 
+            System.out.println("1.new Bank");
+            System.out.println("2.new customer ");
+            System.out.println("3.new account ");
+        System.out.println("4.creat card ");
+        System.out.println("5.mobile bank ");
+        System.out.println("6.branch ");
 
-    public void login() throws SQLException, InterruptedException {
-
-
-
-            System.out.println("خوش آمدید");
-
-            System.out.println("1.بانک");
-            System.out.println("2.ایجاد مشتری ");
-            System.out.println("3.ایجاد حساب ");
-        System.out.println("4.ساخت کارت ");
-            System.out.println("0.خروج");
+            System.out.println("0.exist");
 
 
             int choice = scn.nextInt();
@@ -45,6 +44,14 @@ public class MenuView {
                 CreaditCardView creaditCardView = new CreaditCardView();
                 creaditCardView.view();
                 break;
+                case 5:
+                    MobileBankView mobileBankView = new MobileBankView();
+                    mobileBankView.mainView();
+                    break;
+                case 6:
+                     BranchView branchView= new BranchView();
+                    branchView .view();
+                    break;
                 case 0:
                     quit = true;
                     break;

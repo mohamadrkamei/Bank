@@ -1,6 +1,6 @@
 package com.company.controller;
 
-import com.company.service.CardService;
+import com.company.service.impl.CardService;
 
 import java.sql.SQLException;
 
@@ -10,5 +10,10 @@ public class CardController {
 
     public void createCard(String accountNumber) throws SQLException {
         cardService.createCard(accountNumber);
+    }
+
+    public void findcard(String cardNumber) throws SQLException {
+
+        cardService.findCard(cardNumber);
     }
 }

@@ -1,8 +1,7 @@
 package com.company.view;
 
 import com.company.controller.AccountController;
-import com.company.controller.CustomerController;
-import com.company.service.CustomerService;
+import com.company.service.impl.CustomerService;
 
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -16,13 +15,13 @@ public class AccountView {
     AccountController accountController = new AccountController();
 
 
-    public  void view() throws SQLException, InterruptedException {
+    public  void view() throws Exception {
         do {
 
-            System.out.println("1. ایجاد حساب جدید");
-            System.out.println("2. مشاهده ی حساب های مشتری ");
-            System.out.println("3. جست و جو در حساب ها ");
-            System.out.println("0.صفحه ی قبل");
+            System.out.println("1. create account ");
+            System.out.println("2.show customers account ");
+            System.out.println("3. find account ");
+            System.out.println("0.Previous");
 
 
             int choice = scn.nextInt();
@@ -39,7 +38,7 @@ public class AccountView {
                     break;
                 case 0:
                     quit = true;
-                    menuView.login();
+                    MenuView.login();
                     break;
                 default:
                     System.out.println("wrong choice.");
@@ -55,12 +54,12 @@ public class AccountView {
     }
 
     private void showCustomerAccounts() throws SQLException {
-        System.out.println("کد ملی مشتری را وارد کنید");
+        System.out.println("customers national ID : ");
         String nationality = scn.next();
         int customerId=  customerService.findCustomer(nationality);
         System.out.println("---------------------------------------------------------------------------");
         if (customerId == 0 ){
-            System.out.println("مشتری با این کد ملی وجود ندارد .");
+            System.out.println("National ID not found  .");
         }else {
 
             accountController.showCustomerAccounts(customerId);
@@ -68,8 +67,8 @@ public class AccountView {
 
     }
 
-    private void createAccount() throws SQLException, InterruptedException {
-        System.out.println("کد ملی مشتری را وارد کنید");
+    private void createAccount() throws Exception {
+        System.out.println("customers national ID :");
         String nationality = scn.next();
         int customerId=  customerService.findCustomer(nationality);
         System.out.println("---------------------------------------------------------------------------");
@@ -81,18 +80,18 @@ public class AccountView {
        }
        else {
 
-           System.out.println("مشتری با این مشخصات وجود ندارد . لطفا ابتدا مشتری را ایجاد کنید .");
-           System.out.println("1-ایجاد مشتری ");
-           System.out.println("2-کد ملی جدید ");
-           System.out.println("3-صفحه ی قبل");
+           System.out.println("Customer not found with this profile . create customer .");
+           System.out.println("1-create customer ");
+           System.out.println("2-national ID ");
+           System.out.println("3-previous");
            int choice = scn.nextInt();
            switch (choice){
                case 1:
-                   System.out.println("نام مشتری ");
+                   System.out.println("customer first name  ");
                    String firstName = scn.next();
-                   System.out.println("نام خانوادگی مشتری ");
+                   System.out.println("customer last Name  ");
                    String lastname = scn.next();
-                   System.out.println("کد ملی");
+                   System.out.println("national ID");
                    String nationalityId = scn.next();
                    String fullName= firstName.concat(lastname);
                    customerService.createCustomer(fullName,nationalityId);
@@ -100,7 +99,7 @@ public class AccountView {
                case 2: this.view();
                break;
                case 3:
-                   menuView.login();
+                   MenuView.login();
                    break;
            }
        }

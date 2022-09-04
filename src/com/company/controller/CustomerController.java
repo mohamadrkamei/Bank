@@ -1,7 +1,7 @@
 package com.company.controller;
 
 
-import com.company.service.CustomerService;
+import com.company.service.impl.CustomerService;
 
 import java.sql.SQLException;
 

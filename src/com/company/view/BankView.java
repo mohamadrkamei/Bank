@@ -11,12 +11,12 @@ public class BankView {
     Scanner scn = new Scanner(System.in);
     boolean quit = false;
     MenuView menuView = new MenuView();
-    public  void view() throws SQLException, InterruptedException {
+    public  void view() throws Exception {
         do {
 
-            System.out.println("1. ایجاد بانک جدید");
-            System.out.println("2. مشاهده ی لیست بانک ها ");
-            System.out.println("0.صفحه ی قبل");
+            System.out.println("1. create bank");
+            System.out.println("2.list of bank ");
+            System.out.println("0.Previous");
 
 
             int choice = scn.nextInt();
@@ -30,7 +30,7 @@ public class BankView {
                     break;
                 case 0:
                     quit = true;
-                    menuView.login();
+                    MenuView.login();
                     break;
                 default:
                     System.out.println("wrong choice.");
@@ -52,7 +52,7 @@ public class BankView {
         Bank bank = new Bank();
         System.out.println();
 
-        System.out.println("نام بانک  و شعبه را وارد کنید :");
+        System.out.println("bank name and branch name :");
         String name =  scn.next();
         String branchName =  scn.next();
         bank.setName(name);
